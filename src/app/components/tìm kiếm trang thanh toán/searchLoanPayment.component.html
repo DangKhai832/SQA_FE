@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng kí tài khoản</title>
+</head>
+<body>
+<div class="background">
+  <h2 style="padding: 20px 0px;text-align: center ">Tìm kiếm tài khoản khách hàng</h2>
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="keySearch" (keyup.enter)="fetchCustomers()" placeholder="Nhập tên khách hàng...">
+    <button class="search-button btn btn-danger" (click)="fetchCustomers()" >Tìm kiếm</button>
+  </div>
+
+
+  <div class="p-grid p-justify-center">
+    <div class="p-col-10">
+      <div class="table-container">
+        <table class="custom-table">
+          <!-- Header của bảng -->
+          <thead>
+          <tr>
+            <th style="text-align: center;">STK</th>
+            <th style="text-align: center;">Họ và tên</th>
+            <th style="text-align: center;">Ngày sinh</th>
+            <th style="text-align: center;">Quê quán</th>
+            <th style="text-align: center;">Actions</th>
+          </tr>
+          </thead>
+          <!-- Body của bảng -->
+          <tbody>
+          <tr *ngFor="let customer of customers">
+            <td style="text-align: center;">{{customer.id}}</td>
+            <td>{{customer.fullName}}</td>
+            <td style="text-align: center;">{{ customer.dob | date :'dd/MM/yyyy' }}</td>
+            <td>{{customer.district}}, {{customer.province}}, {{customer.city}}</td>
+            <td style="text-align: center">
+              <button pButton type="button" (click)="showCustomerDetails(customer.id)">
+                <a class="pi pi-eye" style="margin-right: 5px;" ></a>
+                View
+              </button>
+              <button pButton type="button" (click)="openListLoan(customer.id)">
+                DS khoản vay
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <p-dialog header="Thông tin chi tiết khách hàng" [(visible)]="displayDialog" [responsive]="true" [style]="{width: '50%'}" [modal]="true">
+    <ng-template pTemplate="content">
+      <!-- Nội dung của dialog -->
+      <div>
+        <p>Thông tin chi tiết về khách hàng:</p>
+        <ul>
+          <li><strong>Họ và tên:</strong> {{selectedCustomer.fullName}}</li>
+          <li><strong>Ngày sinh:</strong> {{selectedCustomer.dob | date :'dd/MM/yyyy' }}</li>
+          <li><strong>Quê quán:</strong> {{selectedCustomer.district}}, {{selectedCustomer.province}}, {{selectedCustomer.province}}, {{selectedCustomer.city}}</li>
+          <li><strong>Email:</strong> {{selectedCustomer.email}}</li>
+          <li><strong>Giới tính:</strong> {{selectedCustomer.gender ? 'Nữ' : 'Nam'}}</li>
+          <li><strong>Nghề nghiệp:</strong> {{selectedCustomer.job}}</li>
+
+        </ul>
+      </div>
+    </ng-template>
+  </p-dialog>
+
+</div>
+</body>
+</html>

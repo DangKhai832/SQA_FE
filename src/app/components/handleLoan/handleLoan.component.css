@@ -1,0 +1,41 @@
+.table-container {
+  margin: 20px auto; /* Căn giữa trên trang */
+  text-align: center; /* Căn giữa nội dung bảng */
+}
+
+.custom-table {
+  width: 70%; /* Chiếm toàn bộ chiều rộng của container */
+  border-collapse: collapse; /* Xóa khoảng cách giữa các ô */
+  margin: 0 auto; /* Căn giữa bảng */
+}
+
+.custom-table th, .custom-table td {
+  border: 1px solid #ddd; /* Đường viền của các ô */
+  padding: 8px; /* Khoảng cách bên trong của các ô */
+  text-align: left; /* Căn lề nội dung của các ô */
+}
+
+.custom-table th {
+  background-color: #f2f2f2; /* Màu nền của header */
+  color: #333; /* Màu chữ của header */
+}
+
+.custom-table tr:nth-child(even) {
+  background-color: #f2f2f2; /* Màu nền của các dòng chẵn */
+}
+.custom-table button {
+  margin: 0 5px; /* Tạo khoảng cách giữa các nút button */
+  border-radius: 8px; /* Làm tròn góc của nút button */
+  border: none; /* Loại bỏ viền của nút button */
+  padding: 8px 16px; /* Tăng khoảng cách bên trong nút button */
+  background-color: rgba(47, 206, 211, 0.8); /* Màu nền của nút button */
+  color: #fff; /* Màu chữ của nút button */
+  font-size: 14px; /* Kích thước chữ của nút button */
+  cursor: pointer; /* Biến con trỏ thành hình bàn tay khi di chuột qua nút button */
+  transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển đổi màu khi hover */
+}
+
+.custom-table button:hover {
+  background-color: #b22b2b; /* Màu nền của nút button khi hover */
+  color: #f2f2f2; /* Màu chữ của nút button khi hover */
+}

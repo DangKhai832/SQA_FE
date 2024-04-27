@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xử lí khoản vay</title>
+</head>
+<body>
+  <h1 class="text-center" style="padding: 20px 0px ">Danh sách các khoản cần thanh toán</h1>
+  <div class="p-grid p-justify-center">
+  <div class="p-col-10">
+    <div class="table-container">
+      <table class="custom-table">
+        <!-- Header của bảng -->
+        <thead>
+        <tr>
+<!--          <th style="text-align: center;">amount</th>-->
+          <th style="text-align: center;">Kì hạn</th>
+          <th style="text-align: center;">Gốc còn lại</th>
+          <th style="text-align: center;"> Lãi hàng tháng</th>
+          <th style="text-align: center;">Gốc hàng tháng</th>
+          <th style="text-align: center;">Số tiền phải trả hàng tháng</th>
+          <th style="text-align: center;">Ngày phải trả</th>
+          <th style="text-align: center;">Trạng thái</th>
+          <th style="text-align: center;">Actions</th>
+        </tr>
+        </thead>
+        <!-- Body của bảng -->
+        <tbody>
+        <tr *ngFor="let payment of listPayment; let i = index">
+          <td style="text-align: center;">{{ payment.tenor }}</td>
+          <td style="text-align: center;">{{ payment.remainRoot | currencyFormat }}</td>
+          <td style="text-align: center;">{{ payment.monthlyInterest | currencyFormat }}</td>
+          <td style="text-align: center;">{{ payment.monthlyRoot | currencyFormat }}</td>
+          <td style="text-align: center;">{{ payment.monthlyPayment | currencyFormat }}</td>
+          <td style="text-align: center;">{{ payment.pay_date | date: 'dd/MM/yyyy' }}</td>
+          <td style="text-align: center; white-space: nowrap">
+            {{ payment.status === 1 ? 'Quá hạn' : 'Chưa đến hạn' }}
+          </td>
+          <td style="text-align: center">
+            <button *ngIf="payment.status === 1 && i === 0" pButton type="button" (click)="handlePayment(payment.id)">
+              Thanh toán
+            </button>
+            <button *ngIf="payment.status === 1 && i !== 0" pButton type="button" disabled>
+              Mời thanh toán tháng {{listPayment[0].tenor}} trước
+            </button>
+            <button *ngIf="payment.status === 0" pButton type="button" disabled>
+              Không thể thanh toán trước
+            </button>
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

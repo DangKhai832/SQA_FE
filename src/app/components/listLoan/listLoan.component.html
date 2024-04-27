@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng kí tài khoản</title>
+</head>
+<body>
+<div class="background">
+  <div class="container">
+    <div class="row justify-content-center personal-info">
+      <h1 class="text-center" style="padding: 20px 0px ">Thông tin cá nhân</h1>
+      <div class="col-md-3">
+        <p><strong>Tên:</strong> {{ customerInfo.fullName }}</p>
+      </div>
+      <div class="col-md-5">
+        <p><strong>Email:</strong> {{ customerInfo.email }}</p>
+      </div>
+      <div class="col-md-4">
+        <p><strong>Ngày sinh:</strong> {{ customerInfo.dob | date :'dd/MM/yyyy' }}</p>
+      </div>
+      <div class="col-md-3">
+        <p><strong>Giới tính:</strong> {{ customerInfo.gender == 1 ? "Nữ" : "Nam" }}</p>
+      </div>
+      <div class="col-md-5">
+        <p><strong>Số điện thoại:</strong> {{ customerInfo.phoneNumber }}</p>
+      </div>
+      <div class="col-md-4">
+        <p><strong>Địa chỉ:</strong> {{ customerInfo.district }}, {{ customerInfo.province }}, {{ customerInfo.city }}</p>
+      </div>
+    </div>
+    <h1 class="text-center" style="padding: 20px 0px ">Danh sách khoản vay</h1>
+    <div class="p-grid p-justify-center">
+      <div class="p-col-10">
+        <div class="table-container">
+          <table class="custom-table">
+            <!-- Header của bảng -->
+            <thead>
+            <tr>
+              <th style="text-align: center;">Mã khoản vay</th>
+              <th style="text-align: center;">Mã khách hàng</th>
+              <th style="text-align: center;">Ngày giải ngân</th>
+              <th style="text-align: center;">Số tiền vay ban đầu</th>
+              <th style="text-align: center;">Action</th>
+            </tr>
+            </thead>
+            <!-- Body của bảng -->
+            <tbody>
+            <tr *ngFor="let loan of listLoan">
+              <td style="text-align: center;">{{loan.id}}</td>
+              <td style="text-align: center;" >{{loan.customerId}}</td>
+              <td style="text-align: center;">{{ loan.startDate | date :'dd/MM/yyyy' }}</td>
+              <td style="text-align: center;">{{ loan.amount }}</td>
+              <td style="text-align: center">
+                <button pButton  type="button" (click)="openHandleLoan(loan.id)">
+                  Thanh toán khoản vay
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

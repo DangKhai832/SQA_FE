@@ -1,0 +1,100 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  /*background-color: #f9e3e4; !* Màu nền hồng nhạt *!*/
+  height: 100%;
+}
+
+.buttons span {
+  font-size: 25px; /* Điều chỉnh kích thước phù hợp */
+  padding: 35px; /* Khoảng cách bên phải giữa các span */
+}
+
+.header-container {
+  background-color: rgba(253, 149, 173, 0.3); /* Màu nền hồng nhạt */
+  color: #000; /* Màu chữ đen */
+  padding: 50px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 100px; /* Độ dài header xuống dưới */
+}
+
+.background {
+  /*background-color: #f9e3e4; !* Màu nền hồng nhạt *!*/
+  min-height: 100vh; /* Chiều cao tối thiểu là 100% của viewport */
+}
+
+.form-group label {
+  font-weight: bold; /* Đặt font-weight là bold */
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.buttons span,
+.logout-button {
+  cursor: pointer;
+  margin-right: 20px;
+  transition: color 0.3s;
+  color: #d32f2f; /* Màu chữ đỏ */
+}
+
+.buttons span:hover,
+.logout-button:hover {
+  color: #000; /* Màu chữ đen khi hover */
+}
+
+.user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.container h2 {
+  margin-bottom: 15px;
+}
+
+.required {
+  color: red;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px; /* Thêm khoảng cách bên phải giữa checkbox và tiêu đề */
+}
+
+.loan-form {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.custom-table button {
+  margin: 0 5px; /* Tạo khoảng cách giữa các nút button */
+  border-radius: 8px; /* Làm tròn góc của nút button */
+  border: none; /* Loại bỏ viền của nút button */
+  padding: 8px 16px; /* Tăng khoảng cách bên trong nút button */
+  background-color: rgba(47, 206, 211, 0.8); /* Màu nền của nút button */
+  color: #fff; /* Màu chữ của nút button */
+  font-size: 14px; /* Kích thước chữ của nút button */
+  cursor: pointer; /* Biến con trỏ thành hình bàn tay khi di chuột qua nút button */
+  transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển đổi màu khi hover */
+}
+
+.custom-table button:hover {
+  background-color: #b22b2b; /* Màu nền của nút button khi hover */
+  color: #f2f2f2; /* Màu chữ của nút button khi hover */
+}

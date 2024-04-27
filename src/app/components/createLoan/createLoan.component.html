@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng kí tài khoản</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="background">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h1 style="padding: 20px 0px ">Thông tin cá nhân</h1>
+        <div *ngIf="customerInfo">
+          <p><strong>Tên:</strong> {{ customerInfo.fullName }}</p>
+          <p><strong>Email:</strong> {{ customerInfo.email }}</p>
+          <p><strong>Giới tính:</strong> {{ customerInfo.gender == 1 ? "Nữ" : "Nam" }}</p>
+          <p><strong>Ngày sinh:</strong> {{ customerInfo.dob | date :'dd/MM/yyyy' }}</p>
+          <p><strong>Số điện thoại:</strong> {{ customerInfo.phoneNumber }}</p>
+          <p><strong>Địa chỉ:</strong> {{ customerInfo.district }}, {{ customerInfo.province }}, {{ customerInfo.city }}</p>
+          <p><strong>Nghề nghiệp:</strong> {{ customerInfo.job }}</p>
+          <!-- Thêm các trường thông tin khác tùy theo yêu cầu -->
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h1 style="padding: 20px 0px ">Đăng ký khoản vay</h1>
+        <div class="loan-form">
+          <div class="form-group">
+            <label for="loanAmount">Số tiền đề nghị cấp tín dụng (VNĐ) <span class="required">*</span></label>
+            <input type="text" id="loanAmount" min="0" max="1000000000" class="form-control" [(ngModel)]="loanAmount" placeholder="Nhập số tiền" (input)="validateLoanAmount($event)">
+          </div>
+          <div class="form-group">
+            <label for="loanTerm">Kỳ hạn (Tháng) <span class="required">*</span></label>
+            <select id="loanTerm" class="form-control" [(ngModel)]="loanTerm" (change)="calculateInterestRate()">
+              <option value="3">3 tháng</option>
+              <option value="6">6 tháng</option>
+              <option value="9">9 tháng</option>
+              <option value="12">12 tháng</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="interestRate">Lãi suất (%) <span class="required">*</span></label>
+            <input type="text" id="interestRate" class="form-control" disabled [(ngModel)]="interestRate" placeholder="Mời chọn kỳ hạn trước !">
+          </div>
+          <div class="form-group">
+            <label>Giấy tờ liên quan:</label><br>
+            <input type="checkbox" id="incomeProof"> <label for="incomeProof">   Bảng lương</label><br>
+            <input type="checkbox" id="collateral"> <label for="collateral">   Tài sản thế chấp</label>
+          </div>
+          <button class="btn btn-primary" (click)="submitLoan()">Tạo khoản vay</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Trong template của component createLoan.component.html -->
+  <p-dialog header="Thông báo"[(visible)]="displayDialog" [responsive]="true" [style]="{width: '50%'}" [modal]="true">
+    <ng-template pTemplate>
+      <p>Khoản vay đã được tạo thành công!</p>
+      <div style="text-align: center; margin-top: 20px;">
+        <button pButton type="button" style="margin-right : 45px" (click)="continueCreating()" label="Tiếp tục"></button>
+        <button pButton type="button" (click)="goBack()" label="Trở về"></button>
+      </div>
+    </ng-template>
+  </p-dialog>
+
+
+</div>
+</body>
+</html>
