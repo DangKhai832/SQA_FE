@@ -50,6 +50,18 @@ body {
   font-weight: bold; /* Đặt font-weight là bold */
 }
 
+.image-container {
+  overflow: hidden; /* Ẩn phần thừa của hình ảnh */
+  border-radius: 50%; /* Biến hình ảnh thành hình tròn */
+}
+
+img {
+  width: 100%; /* Đảm bảo rằng hình ảnh sẽ lấp đầy vùng chứa */
+  height: auto;
+  display: block; /* Loại bỏ khoảng trống dư thừa */
+}
+
+
 .buttons span,
 .logout-button {
   cursor: pointer;

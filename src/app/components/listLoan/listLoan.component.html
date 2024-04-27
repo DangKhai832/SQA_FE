@@ -9,26 +9,27 @@
 <div class="background">
   <div class="container">
     <div class="row justify-content-center personal-info">
-      <h1 class="text-center" style="padding: 20px 0px ">Thông tin cá nhân</h1>
+      <h2 class="text-center" style="padding: 20px 0px ">Thông tin cá nhân</h2>
       <div class="col-md-3">
-        <p><strong>Tên:</strong> {{ customerInfo.fullName }}</p>
+        <p style="font-size: 20px;"><strong>Tên:</strong> {{ customerInfo.fullName }}</p>
       </div>
       <div class="col-md-5">
-        <p><strong>Email:</strong> {{ customerInfo.email }}</p>
+        <p style="font-size: 20px;"><strong>Email:</strong> {{ customerInfo.email }}</p>
       </div>
       <div class="col-md-4">
-        <p><strong>Ngày sinh:</strong> {{ customerInfo.dob | date :'dd/MM/yyyy' }}</p>
+        <p style="font-size: 20px;"><strong>Ngày sinh:</strong> {{ customerInfo.dob | date :'dd/MM/yyyy' }}</p>
       </div>
       <div class="col-md-3">
-        <p><strong>Giới tính:</strong> {{ customerInfo.gender == 1 ? "Nữ" : "Nam" }}</p>
+        <p style="font-size: 20px;"><strong>Giới tính:</strong> {{ customerInfo.gender == 1 ? "Nữ" : "Nam" }}</p>
       </div>
       <div class="col-md-5">
-        <p><strong>Số điện thoại:</strong> {{ customerInfo.phoneNumber }}</p>
+        <p style="font-size: 20px;"><strong>Số điện thoại:</strong> {{ customerInfo.phoneNumber }}</p>
       </div>
       <div class="col-md-4">
-        <p><strong>Địa chỉ:</strong> {{ customerInfo.district }}, {{ customerInfo.province }}, {{ customerInfo.city }}</p>
+        <p style="font-size: 20px;"><strong>Địa chỉ:</strong> {{ customerInfo.district }}, {{ customerInfo.province }}, {{ customerInfo.city }}</p>
       </div>
     </div>
+
     <h1 class="text-center" style="padding: 20px 0px ">Danh sách khoản vay</h1>
     <div class="p-grid p-justify-center">
       <div class="p-col-10">
