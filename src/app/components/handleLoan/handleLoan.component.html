@@ -12,7 +12,7 @@
     <div class="col-md-4">
       <div>
         <p><strong>ID:</strong> {{ dataPayment.id }}</p>
-        <p><strong>Số tiền vay:</strong> {{ dataPayment.amount }} VNĐ</p>
+        <p><strong>Số tiền vay:</strong> {{ dataPayment.amount | number:'1.0-0' }} VNĐ</p>
       </div>
     </div>
     <div class="col-md-4">
@@ -50,11 +50,11 @@
         <tbody>
         <tr *ngFor="let payment of listPayment; let i = index">
           <td style="text-align: center;">{{ payment.tenor }}</td>
-          <td style="text-align: center;">{{ payment.remainRoot | currencyFormat }}</td>
-          <td style="text-align: center;">{{ payment.monthlyInterest | currencyFormat }}</td>
-          <td style="text-align: center;">{{ payment.monthlyRoot | currencyFormat }}</td>
-          <td style="text-align: center;">{{ payment.monthlyPayment | currencyFormat }}</td>
-          <td style="text-align: center;">{{ payment.pay_date | date: 'dd/MM/yyyy' }}</td>
+          <td style="text-align: center;white-space: nowrap">{{ payment.remainRoot | number:'1.0-0'  }} đ</td>
+          <td style="text-align: center;white-space: nowrap">{{ payment.monthlyInterest | number:'1.0-0'  }} đ</td>
+          <td style="text-align: center;white-space: nowrap">{{ payment.monthlyRoot | number:'1.0-0'  }} đ</td>
+          <td style="text-align: center;white-space: nowrap">{{ payment.monthlyPayment | number:'1.0-0'  }} đ</td>
+          <td style="text-align: center;white-space: nowrap">{{ payment.pay_date | date: 'dd/MM/yyyy' }}</td>
           <td style="text-align: center; white-space: nowrap">
             {{ payment.status === 1 ? 'Quá hạn' : 'Chưa đến hạn' }}
           </td>
