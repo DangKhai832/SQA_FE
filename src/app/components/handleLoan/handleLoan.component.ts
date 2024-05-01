@@ -25,19 +25,30 @@ export class HandleLoanComponent implements OnInit {
   ngOnInit(): void {
     this.loanId = this.router.snapshot.url[1].path;
     this.getHistory();
-    // this.getDetailPayment();
+    this.getDetailPayment();
   }
 
-  // getDetailPayment () {
-  //   this.authService.getDetailPayment(this.loanId).subscribe(
-  //     (res: any) => {
-  //       this.dataPayment = res.data;
-  //     },
-  //     (error) => {
-  //       this.toastr.error("Lấy không thành công lịch sử")
-  //     }
-  //   );
-  // }
+  getDetailPayment () {
+    this.authService.getDetailPayment(this.loanId).subscribe(
+      (res: any) => {
+        this.dataPayment = res.data;
+        this.getCustomerData(this.dataPayment.customerId)
+      },
+      (error) => {
+        this.toastr.error("Lấy không thành công lịch sử")
+      }
+    );
+  }
+  getCustomerData (id : any) {
+    this.authService.detailCustomer(id).subscribe(
+      (res: any) => {
+        this.customerInfo = res.data;
+      },
+      (error) => {
+        this.toastr.error("Lấy không thành công lịch sử")
+      }
+    );
+  }
 
   getHistory () {
     this.authService.getHistoryPayment(this.loanId).subscribe(
@@ -51,7 +62,6 @@ export class HandleLoanComponent implements OnInit {
   }
 
   handlePayment(paymentId : any) {
-    debugger
     this.authService.deletePayment(paymentId).subscribe(
       (res: any) => {
         if (res === "Xóa khoản thanh toán thành công") {

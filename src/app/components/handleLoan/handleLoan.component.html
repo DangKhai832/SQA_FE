@@ -6,7 +6,31 @@
   <title>Xử lí khoản vay</title>
 </head>
 <body>
-  <h1 class="text-center" style="padding: 20px 0px ">Danh sách các khoản cần thanh toán</h1>
+<div class="container">
+  <h1 class="text-center">Thông tin khoản vay</h1>
+  <div class="row">
+    <div class="col-md-4">
+      <div>
+        <p><strong>ID:</strong> {{ dataPayment.id }}</p>
+        <p><strong>Số tiền vay:</strong> {{ dataPayment.amount }} VNĐ</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div>
+        <p><strong>Lãi suất:</strong> {{ dataPayment.interestRate * 100 }}%</p>
+        <p><strong>Ngày giải ngân:</strong> {{ dataPayment.startDate | date: 'dd/MM/yyyy' }}</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div>
+        <p><strong>Số tháng vay:</strong> {{ dataPayment.loanTerm }} tháng</p>
+        <p><strong>Người vay:</strong> {{ customerInfo.fullName }}</p>
+      </div>
+    </div>
+    <!-- Thêm các cột khác tại đây nếu cần -->
+  </div>
+</div>
+<h1 class="text-center" style="padding: 20px 0px ">Danh sách các khoản cần thanh toán</h1>
   <div class="p-grid p-justify-center">
   <div class="p-col-10">
     <div class="table-container">
