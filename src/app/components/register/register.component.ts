@@ -55,14 +55,20 @@ export class RegisterComponent implements OnInit {
     const body = this.registerForm.value;
 
     this.authService.createCustomer(body).subscribe(
-      (res :any) => {
-        if(res.data) {
+      (res: any) => {
+        if (res.data) {
           this.toastr.success(res.message);
-          this.resetFields()
+          this.resetFields();
         }
       },
       (error) => {
-        this.toastr.error('Đã xảy ra lỗi khi tạo tài khoản', 'Error');
+        if (typeof error.error.message === 'object') {
+          for (let key in error.error.message) {
+            this.toastr.error(error.error.message[key]);
+          }
+        } else {
+          this.toastr.error(error.error.message);
+        }
       }
     );
   }
