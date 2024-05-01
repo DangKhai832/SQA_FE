@@ -31,7 +31,7 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              "src/icon2.ico",
+              "src/assets/icon2.jpg",
               "src/assets"
             ],
             "styles": [
@@ -95,7 +95,7 @@
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
-              "src/icon2.ico",
+              "src/assets/icon2.jpg",
               "src/assets"
             ],
             "styles": [
