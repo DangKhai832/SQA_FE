@@ -11,10 +11,8 @@
   <div class="p-col-10">
     <div class="table-container">
       <table class="custom-table">
-        <!-- Header của bảng -->
         <thead>
         <tr>
-<!--          <th style="text-align: center;">amount</th>-->
           <th style="text-align: center;">Kì hạn</th>
           <th style="text-align: center;">Gốc còn lại</th>
           <th style="text-align: center;"> Lãi hàng tháng</th>
@@ -25,7 +23,6 @@
           <th style="text-align: center;">Actions</th>
         </tr>
         </thead>
-        <!-- Body của bảng -->
         <tbody>
         <tr *ngFor="let payment of listPayment; let i = index">
           <td style="text-align: center;">{{ payment.tenor }}</td>

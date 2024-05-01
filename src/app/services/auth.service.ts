@@ -27,8 +27,11 @@ export class AuthService {
   getHistoryPayment(loanId : number) {
     return this.http.get(this.baseServerUrl + "payment/history/"+ loanId, {responseType : "json"})
   }
+  getDetailPayment(loanId : number) {
+    return this.http.get(this.baseServerUrl + "loan/details/"+ loanId, {responseType : "json"})
+  }
   deletePayment(paymentId : number) {
-    return this.http.delete(this.baseServerUrl + "payment/delete/" + paymentId, {responseType : "json"})
+    return this.http.delete(this.baseServerUrl + "payment/delete/" + paymentId, {responseType : "text"})
   }
 
   createLoan(body: any) {
