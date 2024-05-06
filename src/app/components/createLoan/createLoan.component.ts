@@ -49,6 +49,10 @@ export class CreateLoanComponent implements OnInit {
       this.toastr.warning("Số tiền vay không thể ít hơn 10 triệu!")
       return;
     }
+    if(this.loanAmount && this.loanAmount > 2000000000) {
+      this.toastr.warning("Số tiền vay không thể nhiều hơn 2 tỉ!")
+      return;
+    }
     const incomeProofChecked: boolean = (document.getElementById('incomeProof') as HTMLInputElement).checked;
     const collateralChecked: boolean = (document.getElementById('collateral') as HTMLInputElement).checked;
     if (incomeProofChecked && collateralChecked) {
