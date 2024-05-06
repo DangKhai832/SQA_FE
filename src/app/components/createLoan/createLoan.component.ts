@@ -91,13 +91,13 @@ export class CreateLoanComponent implements OnInit {
 
   calculateInterestRate() {
     if(this.loanTerm == 3) {
-      this.interestRate = 3
+      this.interestRate = 6.5
     } else if(this.loanTerm == 6) {
-      this.interestRate = 6
+      this.interestRate = 6.5
     } else if(this.loanTerm == 9) {
-      this.interestRate = 9
+      this.interestRate = 6.5
     } else if(this.loanTerm == 12) {
-      this.interestRate = 12
+      this.interestRate = 6.5
     }
   }
   continueCreating() {
