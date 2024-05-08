@@ -40,22 +40,40 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    if((this.registerForm.get("email")?.dirty && this.registerForm.get("email")?.invalid) || this.registerForm.get("phone_number")?.dirty && this.registerForm.get("phone_number")?.invalid) {
+    const taxCodeControl = this.registerForm.get("tax_code");
+    if((this.registerForm.get("email")?.dirty && this.registerForm.get("email")?.invalid) || taxCodeControl && taxCodeControl.value || this.registerForm.get("phone_number")?.dirty && this.registerForm.get("phone_number")?.invalid || this.registerForm.get("identify")?.dirty && this.registerForm.get("identify")?.invalid || this.registerForm.get("tax_code")?.dirty && this.registerForm.get("tax_code")?.invalid ) {
+      let thongbao : boolean = false
       if(this.registerForm.get("email")?.dirty && this.registerForm.get("email")?.invalid) {
         this.toastr.error("Mời bạn nhập đúng định dạng email!");
+        thongbao = true
       }
       if(this.registerForm.get("phone_number")?.dirty && this.registerForm.get("phone_number")?.invalid) {
         this.toastr.error("Mời bạn nhập đủ 10 số của điện thoại!");
+        thongbao = true
       }
       if(this.registerForm.get("identify")?.dirty && this.registerForm.get("identify")?.invalid) {
         this.toastr.error("Mời bạn nhập đủ 12 số CCCD!");
+        thongbao = true
       }
+      debugger
+      if (taxCodeControl && taxCodeControl.value) {
+        const taxCodeValue = taxCodeControl.value.toString();
+        if (taxCodeValue.length !== 10) {
+          this.toastr.error("Mời bạn nhập đủ 10 số thuế!");
+          thongbao = true
+        }
+      }
+      debugger
+     if(thongbao == true) {
+       return
+     }
     }
     if (this.registerForm.invalid) {
       this.toastr.error("Mời nhập hết cách trường bỏ trống!");
       return;
     }
     const body = this.registerForm.value;
+    debugger
 
     this.authService.createCustomer(body).subscribe(
       (res: any) => {
