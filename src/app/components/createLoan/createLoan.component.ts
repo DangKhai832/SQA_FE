@@ -82,14 +82,14 @@ export class CreateLoanComponent implements OnInit {
       this.toastr.warning("Kiểm tra đã nhận đủ tài liệu vay chưa !");
     }
   }
-  validateLoanAmount(event: any) {
-    let inputValue: string = event.target.value;
-    const pattern = /^[0-9]*$/;
-    if (!pattern.test(inputValue)) {
-      inputValue = inputValue.slice(0, -1);
-      event.target.value = inputValue;
-    }
-  }
+  // validateLoanAmount(event: any) {
+  //   let inputValue: string = event.target.value;
+  //   const pattern = /^[0-9]*$/;
+  //   if (!pattern.test(inputValue)) {
+  //     inputValue = inputValue.slice(0, -1);
+  //     event.target.value = inputValue;
+  //   }
+  // }
 
 
 
