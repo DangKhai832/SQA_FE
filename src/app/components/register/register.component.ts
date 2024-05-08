@@ -47,6 +47,9 @@ export class RegisterComponent implements OnInit {
       if(this.registerForm.get("phone_number")?.dirty && this.registerForm.get("phone_number")?.invalid) {
         this.toastr.error("Mời bạn nhập đủ 10 số của điện thoại!");
       }
+      if(this.registerForm.get("identify")?.dirty && this.registerForm.get("identify")?.invalid) {
+        this.toastr.error("Mời bạn nhập đủ 12 số CCCD!");
+      }
     }
     if (this.registerForm.invalid) {
       this.toastr.error("Mời nhập hết cách trường bỏ trống!");
